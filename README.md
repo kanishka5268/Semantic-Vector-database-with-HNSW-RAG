@@ -1,4 +1,4 @@
-# Semantic-Vector-Database-with-HNSW-RAG
+# Semantic-Search-Engine-with-HNSW-RAG
 
 A high-performance **Vector Database** developed in **C++** that supports semantic search using multiple nearest-neighbor search algorithms. The project also implements a **Retrieval-Augmented Generation (RAG)** pipeline by integrating a local Large Language Model (LLM) through **Ollama**, enabling users to query their own documents using natural language.
 
