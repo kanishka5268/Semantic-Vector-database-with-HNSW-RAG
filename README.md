@@ -149,6 +149,12 @@ Run the backend server.
 Finally, open `index.html` in your browser.
 
 ---
+## Third-Party Libraries
+
+- cpp-httplib (MIT License)
+- nlohmann/json (MIT License)
+
+---
 
 ## Note
 
