@@ -1,157 +1,64 @@
-# Semantic-Vector-database-with-HNSW-RAG
+# Semantic Vector Database with HNSW & RAG
 
-A high-performance **Vector Database** developed in **C++** that supports semantic search using multiple nearest-neighbor search algorithms. The project also implements a **Retrieval-Augmented Generation (RAG)** pipeline by integrating a local Large Language Model (LLM) through **Ollama**, enabling users to query their own documents using natural language.
+This project is a semantic vector database built from scratch in C++17. It supports multiple nearest neighbour search algorithms, document retrieval, and a Retrieval-Augmented Generation (RAG) pipeline using Ollama.
 
-The application includes an interactive web interface for vector search, document management, benchmarking, and visualization of semantic relationships.
+The project also includes a web-based interface to visualize vector embeddings, compare search algorithms, and chat with uploaded documents.
 
 ---
 
 ## Features
 
-- Implemented three vector search algorithms:
-  - Hierarchical Navigable Small World (HNSW)
-  - KD-Tree
-  - Brute Force Search
-- Supports multiple distance metrics:
+- Custom implementation of HNSW (Hierarchical Navigable Small World)
+- KD-Tree based nearest neighbour search
+- Brute Force search for comparison
+- REST API built in C++
+- Interactive web interface
+- PCA-based vector visualization
+- Multiple distance metrics
   - Cosine Similarity
   - Euclidean Distance
   - Manhattan Distance
-- RESTful API for vector insertion, deletion, retrieval, and benchmarking
-- Retrieval-Augmented Generation (RAG) pipeline using Ollama
-- Automatic document chunking and embedding generation
-- Interactive web interface for semantic search
-- PCA-based visualization of vector embeddings
-- Benchmarking module for comparing search algorithms
+- Document insertion and chunking
+- Semantic document retrieval
+- Local RAG pipeline using Ollama
+- AI chat over uploaded documents
 
 ---
 
-## System Architecture
-
-```
-                 User Query
-                      │
-                      ▼
-              Embedding Model
-            (nomic-embed-text)
-                      │
-                      ▼
-             HNSW Vector Index
-                      │
-              Top-K Retrieval
-                      │
-                      ▼
-            Retrieved Documents
-                      │
-                      ▼
-           Local LLM (llama3.2)
-                      │
-                      ▼
-             Generated Response
-```
-
----
-
-## Technology Stack
-
-### Programming Language
-- C++17
+## Tech Stack
 
 ### Backend
-- cpp-httplib
-- REST APIs
 
-### Search Algorithms
-- HNSW
+- C++17
+- REST API
+- Custom HNSW
 - KD-Tree
 - Brute Force Search
 
-### AI Components
-- Ollama
-- nomic-embed-text
-- llama3.2
-- Retrieval-Augmented Generation (RAG)
-
 ### Frontend
+
 - HTML
 - CSS
 - JavaScript
+- Canvas API
 
----
+### AI
 
-## Project Workflow
-
-### Semantic Search
-
-```
-Text Query
-      │
-      ▼
-Generate Embedding
-      │
-      ▼
-Vector Similarity Search
-      │
-      ▼
-Top-K Similar Results
-```
-
----
-
-### RAG Pipeline
-
-```
-User Question
-       │
-       ▼
-Embedding Generation
-       │
-       ▼
-Vector Retrieval
-       │
-       ▼
-Relevant Context
-       │
-       ▼
-LLM Inference
-       │
-       ▼
-Generated Answer
-```
+- Ollama
+- nomic-embed-text
+- llama3.2
 
 ---
 
 ## Search Algorithms
 
-### Hierarchical Navigable Small World (HNSW)
+The application supports three search methods:
 
-- Production-grade Approximate Nearest Neighbor search
-- Graph-based indexing
-- Optimized for large-scale vector retrieval
-- Approximate search complexity: O(log N)
+- HNSW (Approximate Nearest Neighbour)
+- KD-Tree
+- Brute Force
 
----
-
-### KD-Tree
-
-- Space-partitioning data structure
-- Efficient for low-dimensional vectors
-- Used for comparison with HNSW
-
----
-
-### Brute Force Search
-
-- Computes distance against every stored vector
-- Exact nearest-neighbor search
-- Baseline implementation for benchmarking
-
----
-
-## Distance Metrics
-
-- Cosine Similarity
-- Euclidean Distance
-- Manhattan Distance
+The benchmark section in the UI compares the latency of these algorithms.
 
 ---
 
@@ -159,56 +66,99 @@ Generated Answer
 
 | Method | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/search` | Search nearest vectors |
-| POST | `/insert` | Insert vector/document |
-| DELETE | `/delete` | Delete vector |
-| POST | `/doc/ask` | Ask questions using RAG |
+| GET | `/items` | Get all vectors |
+| POST | `/insert` | Insert a vector |
+| DELETE | `/delete/{id}` | Delete a vector |
+| GET | `/search` | Semantic search |
 | GET | `/benchmark` | Compare search algorithms |
-| GET | `/hnsw-info` | Retrieve HNSW statistics |
+| GET | `/hnsw-info` | HNSW statistics |
+| GET | `/status` | Ollama status |
+| POST | `/doc/insert` | Insert document |
+| GET | `/doc/list` | List documents |
+| DELETE | `/doc/delete/{id}` | Delete document |
+| POST | `/doc/search` | Retrieve relevant chunks |
+| POST | `/doc/ask` | Ask questions using RAG |
 
 ---
 
-## Project Highlights
+## Project Structure
 
-- Implemented a vector database from scratch in C++
-- Developed three independent nearest-neighbor search implementations
-- Integrated semantic embeddings using Ollama
-- Built an end-to-end Retrieval-Augmented Generation pipeline
-- Designed REST APIs for vector management
-- Visualized embedding distributions using PCA
-- Benchmarked multiple search algorithms on the same dataset
-
----
-
-## Future Improvements
-
-- PDF document ingestion
-- Persistent vector storage
-- Metadata-based filtering
-- User authentication
-- Docker deployment
-- Hybrid keyword + semantic search
+```
+Semantic-Vector-Database
+│
+├── backend/
+├── frontend/
+├── screenshots/
+├── CMakeLists.txt
+└── README.md
+```
 
 ---
 
-## Learning Outcomes
+## Screenshots
 
-This project helped strengthen my understanding of:
+### Main Dashboard
 
-- Vector Databases
-- Semantic Search
-- Approximate Nearest Neighbor Algorithms
-- HNSW
-- KD-Trees
-- REST API Development
-- Retrieval-Augmented Generation (RAG)
-- Large Language Models
-- Embedding Models
-- Information Retrieval
-- C++ System Design
+(Add screenshot here)
+
+### Search Results
+
+(Add screenshot here)
+
+### Knowledge Base
+
+(Add screenshot here)
+
+### AI Chat
+
+(Add screenshot here)
+
+### Benchmark
+
+(Add screenshot here)
 
 ---
 
-## Acknowledgements
+## Running the Project
 
-This project was developed as a learning-focused implementation to gain practical experience with modern semantic search systems, vector databases, and Retrieval-Augmented Generation workflows.
+Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+```
+
+Build the project
+
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
+
+Run Ollama
+
+```bash
+ollama serve
+ollama pull nomic-embed-text
+ollama pull llama3.2
+```
+
+Run the backend server.
+
+Finally, open `index.html` in your browser.
+
+---
+
+## Note
+
+The frontend can be viewed independently, but document retrieval and AI chat require the C++ backend and Ollama to be running locally.
+
+---
+
+## Author
+
+Kanishka
+
+Biochemical Engineering  
+IIT (BHU) Varanasi
